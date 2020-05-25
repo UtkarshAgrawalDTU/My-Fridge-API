@@ -1,49 +1,39 @@
 import json
-import re 
+from recipe.models import Recipe, Ingredient
+from add_ing import remove, removespace
 
-def remove(list):
-    pattern = '[0-9]'
-    list = [re.sub(pattern, '', i) for i in list]
-    list = [item.replace('/', '') for item in list]
-    list = [item.replace('(', '') for item in list]
-    list = [item.replace(')', '') for item in list] 
-    list = [item.replace(':', '') for item in list]
-    list = [item.replace('.', '') for item in list]
-    list = [item.replace('-', '') for item in list]
-    list = [item.replace("'", '') for item in list]
-    list = [item.replace('\x99', '') for item in list]
-    list = [item.replace('tablespoons', '') for item in list]
-    list = [item.replace('ounces', '') for item in list]
-    list = [item.replace('pounds', '') for item in list]
-    list = [item.replace('pound', '') for item in list]
-    list = [item.replace('and', '') for item in list]
-    list = [item.replace('cups', '') for item in list]
-    list = [item.replace('ounce', '') for item in list]
-    list = [item.replace('cup', '') for item in list]
-    list = [item.replace('tablespoon', '') for item in list]
-    return list
+def create_rec_obj(r):
+    name = r["Recipe Name"]
+    img_url = r["Recipe Photo"]
+    author = r["Author"] 
+    prepare_time = r["Prepare Time"] 
+    cook_time = r["Cook Time"] 
+    total_time = r["Total Time"] 
+    directions = r["Directions"] 
+    ingredients_list = r["Ingredients"]
+    rec = Recipe(name = name, img_url = img_url, author = author, prepare_time = prepare_time, cook_time = cook_time, total_time = total_time, directions = directions, ingredients_list = ingredients_list)
+    return rec
+    
 
-def removespace(list):
-    newlist = []
-    for item in list:
-        newlist.append(" ".join(item.split()).lower())
-    return newlist
+def ing_label(r):
+    ingredient = []
+    ing = r['Ingredients'].split(",")
+    for item in ing:
+        ingredient.append(str(item))
+    ingredient = remove(ingredient)
+    ingredient = removespace(ingredient)
+    return ingredient
 
 
 with open('recipes.json') as f:
     recipes_json = json.load(f)
 
-ingredient = []
 
-for recipe in recipes_json:
-        ing = recipe['Ingredients'].split(",")
-        for item in ing:
-            ingredient.append(str(item))
-
-ingredient = remove(ingredient)
-ingredient = removespace(ingredient)
-
-while("" in ingredient) : 
-    ingredient.remove("") 
-
-finallist = list(dict.fromkeys(ingredient))
+for r in recipes_json:
+    obj = create_rec_obj(r)
+    obj.save()
+    ing_labels = ing_label(r)
+    for label in ing_labels:
+        Q = Ingredient.objects.get(name = label)
+        obj.ingredients.add(Q)
+    
