@@ -8,19 +8,19 @@ from django.db.models import Q
 
 
 
-class RecipeListViewSet(viewsets.ModelViewSet):
+class RecipeListViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
 
 
 
-class IngredientListViewSet(viewsets.ModelViewSet):
+class IngredientListViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IngredientSerializer
     queryset = Ingredient.objects.all()
 
 
 
-class MyFridgeViewSet(viewsets.ModelViewSet):
+class MyFridgeViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class =  RecipeSerializer
 
     def get_queryset(self):
