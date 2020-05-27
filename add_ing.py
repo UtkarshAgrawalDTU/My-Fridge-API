@@ -1,3 +1,6 @@
+#Script to add ingredients from json file to database
+
+
 import json
 import re 
 

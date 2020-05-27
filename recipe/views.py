@@ -2,20 +2,22 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import RecipeSerializer, IngredientSerializer
 from .models import Recipe, Ingredient
-from django.http import JsonResponse
-import json
 from functools import reduce
 import operator
 from django.db.models import Q
+
+
 
 class RecipeListViewSet(viewsets.ModelViewSet):
     serializer_class = RecipeSerializer
     queryset = Recipe.objects.all()
 
 
+
 class IngredientListViewSet(viewsets.ModelViewSet):
     serializer_class = IngredientSerializer
     queryset = Ingredient.objects.all()
+
 
 
 class MyFridgeViewSet(viewsets.ModelViewSet):

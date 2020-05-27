@@ -10,6 +10,7 @@ class Ingredient(models.Model):
 
 
 class Recipe(models.Model):
+    
     name = models.CharField(max_length=200, default="Not provided", blank=True)
     img_url = models.URLField(blank= True)
     author = models.CharField(max_length=200, default="Unknown", blank=True)

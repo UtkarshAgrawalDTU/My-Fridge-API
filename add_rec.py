@@ -1,3 +1,5 @@
+#Script to add recipies from json file to database.
+
 import json
 from recipe.models import Recipe, Ingredient
 from add_ing import remove, removespace

@@ -62,6 +62,7 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
+db.json
 
 # Flask stuff:
 instance/
@@ -135,5 +136,3 @@ dmypy.json
 # End of https://www.gitignore.io/api/python,vagrant
 eb-package.zip
 static/
-Pipfile
-Pipfile.lock
