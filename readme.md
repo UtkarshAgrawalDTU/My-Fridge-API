@@ -27,8 +27,8 @@ List of endpoints to fetch data
 * List pf Recipes : "https://myfridgeapi.herokuapp.com/recipes"
 * Unique Recipe from id : "https://myfridgeapi.herokuapp.com/recipes/id"
 * List of Ingredients : "https://myfridgeapi.herokuapp.com/ingredients"
-* Unique Ingredient from id : "https://myfridgeapi.herokuapp.com/ingredients/<id>"
-* Suggested Recipes : "https://myfridgeapi.herokuapp.com/myfridge/?ingredients=<ingredient_list seperated by commas>&search=<your search query>"
+* Unique Ingredient from id : "https://myfridgeapi.herokuapp.com/ingredients/id"
+* Suggested Recipes : "https://myfridgeapi.herokuapp.com/myfridge/?ingredients=&search="
 
 
 ## Status
