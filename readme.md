@@ -1,5 +1,5 @@
-# Betagram
-> Betagram is a mini-Instagram clone designed using Django, JavaScript and Bootstrap ! Just like Instagram, this application allows you to connect with your friends and share images. Check it out here : [Betagram](https://betagram.herokuapp.com)
+# What's In My Fridge? REST API
+> What's In My Fridge? is a REST API which suggests users various recipes based on the ingredients selected. Check it out here: [What's In My Fridge? REST API](https://myfridgeapi.herokuapp.com)
 
 ## Table of contents
 * [General info](#general-info)
@@ -11,45 +11,28 @@
 
 
 ## General info
-This project happens to be one of my first side-project and developed for learning purpose. 
+The project consists of a database consisting of 10,000+ unique recipies and 700+ different ingredients to choose from. Users can enter the ingredients available to them in their home/fridge, and the API will suggest possible recipes which can be prepared from those ingredients!
+
 
 ## Technologies
 * Django - Python Web Framework
-* JavaScript
-* Bootstrap - Frontend HTML/CSS Framework
+* Django Rest Framework - A Django Framework to create REST API's
 * Heroku - Used for Deployment
-* AWS S3 Bucket - Used for storing dynamic picture uploads
+* Gunicorn - Application Server
+* PostgreSQL - Database Management System
 
 
-## Features
-List of features ready and TODOs for future development
-* Create a user account
-* Update your Profile
-* Search friends 
-* View other Betagrammer's profile
-* Connect with Friends by sending them Follow requests
-* Accept Follow requests
-* Create Posts
-* Update your Posts
-* Delete any Post
-* View your friend's Posts in your Feed
-* React to your friend's Posts by Liking or Commenting
-* Notifications panel
-* Reset your Password via registered email
+## Endpoints
+List of endpoints to fetch data
+* List pf Recipes : "https://myfridgeapi.herokuapp.com/recipes"
+* Unique Recipe from id : "https://myfridgeapi.herokuapp.com/recipes/id"
+* List of Ingredients : "https://myfridgeapi.herokuapp.com/ingredients"
+* Unique Ingredient from id : "https://myfridgeapi.herokuapp.com/ingredients/id"
+* Suggested Recipes : "https://myfridgeapi.herokuapp.com/myfridge/?ingredients=&search="
 
-To-do list:
-* Picture load error in Notifications panel (default.jpg)
-* Query error in filtering New Notifications and Old Notifications
-* Change admin url
-* Add title icon
 
 ## Status
 Project is __finished__
 
 ## Authors
 * Utkarsh Agrawal - [UtkarshAgrawalDTU](https://github.com/UtkarshAgrawalDTU)
-
-## Inspiration
-* Huge thanks to Corey Schrafer for his YouTube tutorials on Django.
-* This being a fun project, I got the idea for creating an Instagram clone from [@cdelange](https://github.com/cdelange)
-
