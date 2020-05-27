@@ -4,9 +4,9 @@ from .serializers import RecipeSerializer, IngredientSerializer
 from .models import Recipe, Ingredient
 from django.http import JsonResponse
 import json
-from rest_framework.pagination import PageNumberPagination
-
-
+from functools import reduce
+import operator
+from django.db.models import Q
 
 class RecipeListViewSet(viewsets.ModelViewSet):
     serializer_class = RecipeSerializer
@@ -14,7 +14,7 @@ class RecipeListViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
 
         if not 'ingredients' in self.request.GET:
-            return Recipe.objects.all()
+            return Recipe.objects.filter(id__lte = 100)
             
         query = self.request.GET.get('ingredients').split(",")
         query = list(dict.fromkeys(query))
@@ -30,6 +30,11 @@ class RecipeListViewSet(viewsets.ModelViewSet):
         recipe_list = Recipe.objects.filter(ingredients__in = ingredient_list)
         relevant_recipe_id = []
 
+        if 'search' in self.request.GET:
+            query = self.request.GET.get('search')
+            clean_query = [x.strip() for x in query.split(',')]
+
+            recipe_list =  recipe_list.filter(reduce(operator.and_, (Q(directions__icontains = x) for x in clean_query)))
 
         #Finding relevant recipes
         for recipe in recipe_list:
@@ -52,6 +57,8 @@ class RecipeListViewSet(viewsets.ModelViewSet):
 
         recipes_final = Recipe.objects.filter(id__in = relevant_recipe_id)
         return recipes_final
+
+
 
             
 
