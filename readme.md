@@ -25,7 +25,7 @@ The project consists of a database consisting of 10,000+ unique recipies and 700
 ## Endpoints
 List of endpoints to fetch data
 * List pf Recipes : "https://myfridgeapi.herokuapp.com/recipes"
-* Unique Recipe from id : "https://myfridgeapi.herokuapp.com/recipes/<id>"
+* Unique Recipe from id : "https://myfridgeapi.herokuapp.com/recipes/id"
 * List of Ingredients : "https://myfridgeapi.herokuapp.com/ingredients"
 * Unique Ingredient from id : "https://myfridgeapi.herokuapp.com/ingredients/<id>"
 * Suggested Recipes : "https://myfridgeapi.herokuapp.com/myfridge/?ingredients=<ingredient_list seperated by commas>&search=<your search query>"
