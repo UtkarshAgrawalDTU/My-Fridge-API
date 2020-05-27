@@ -10,7 +10,17 @@ from django.db.models import Q
 
 class RecipeListViewSet(viewsets.ModelViewSet):
     serializer_class = RecipeSerializer
-    
+    queryset = Recipe.objects.all()
+
+
+class IngredientListViewSet(viewsets.ModelViewSet):
+    serializer_class = IngredientSerializer
+    queryset = Ingredient.objects.all()
+
+
+class MyFridgeViewSet(viewsets.ModelViewSet):
+    serializer_class =  RecipeSerializer
+
     def get_queryset(self):
 
         if not 'ingredients' in self.request.GET:
@@ -57,13 +67,4 @@ class RecipeListViewSet(viewsets.ModelViewSet):
 
         recipes_final = Recipe.objects.filter(id__in = relevant_recipe_id)
         return recipes_final
-
-
-
-            
-
-class IngredientListViewSet(viewsets.ModelViewSet):
-    serializer_class = IngredientSerializer
-    queryset = Ingredient.objects.all()
-
 
