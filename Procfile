@@ -1,1 +1,1 @@
-web: gunicorn betagram.wsgi
+web: gunicorn core.wsgi
