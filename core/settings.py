@@ -12,6 +12,7 @@ DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['myfridgeapi.herokuapp.com']
 
+CORS_ORIGIN_ALLOW_ALL=True
 
 # Application definition
 
